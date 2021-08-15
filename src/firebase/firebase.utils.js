@@ -4,12 +4,12 @@ import 'firebase/auth';
 
 
 const config = {
-    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+    apiKey: "AIzaSyD4vhLPGDiP3cPPwfd5UnQInz3M-Ket-ZA",
     authDomain: "t-metro.firebaseapp.com",
     projectId: "t-metro",
     storageBucket: "t-metro.appspot.com",
     messagingSenderId: "385361822684",
-    appId: process.env.REACT_APP_FIREBASE_APPID,
+    appId: "1:385361822684:web:df7ffedc3038a4990a8519",
     measurementId: "G-GKJS51CQLX"
 };
 
