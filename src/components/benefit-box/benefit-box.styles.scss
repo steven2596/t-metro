@@ -1,0 +1,18 @@
+.benefitBox {
+    text-align: center;
+    padding: 2rem;;
+
+    &__icon {
+        width: 5rem;
+        height: 5rem;
+        fill: var(--color-primary);
+    }
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 400;
+        margin-top: var(--mar-l);
+        margin-bottom: var(--mar-s);
+        text-transform: uppercase;
+    }
+}

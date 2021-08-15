@@ -1,0 +1,36 @@
+.custom-button {
+    width: 100%;
+    background-color: var(--color-blue);
+    border: none;
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    text-align: center;
+    display: inline-block;
+    font-size: var(--font-m);
+    cursor: pointer;
+    transition: all .3s;
+
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &:hover {
+        background-color: var(--color-blue-dark);
+    }
+}
+
+.round {
+    border-radius: 10rem;
+}
+
+.google-btn {
+    background-color:transparent;
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+
+    &:hover {
+        color: var(--color-white);
+        background-color: var(--color-blue-dark);
+        border: 1px solid var(--color-blue-dark);
+    }
+}

@@ -1,0 +1,98 @@
+.checkout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    column-gap: 3rem;
+    row-gap: 10rem;
+    margin-top: 7rem;
+    margin-bottom: 40rem;
+
+    
+    
+
+    &__header {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2 ;
+        background-color: var(--color-grey-light);
+        padding: 5rem 0;
+    }
+
+    &__cart {
+        grid-column: 2 / span 7;
+        grid-row: 2 / -1 ;
+        box-shadow: var(--box-shadow);
+        border-radius: 1rem;
+        padding: 2rem;
+
+        @media only screen and (max-width: 1100px) {
+            grid-column: 1 / span 8;
+            margin-left: 1rem;
+        }
+
+        @media only screen and (max-width: 900px) {
+            grid-column: 1 / -1;
+            margin: 0 1rem;
+        }
+    }
+
+    &__summary {
+        grid-column: 9 / span 3;
+        border-radius: 1rem;
+        box-shadow: var(--box-shadow);
+        font-size: var(--font-m);
+        text-align: center;
+        overflow: hidden;
+
+        @media only screen and (max-width: 1100px) {
+            grid-column: 9 / span 4;
+            margin-right: 1rem;
+        }
+
+        @media only screen and (max-width: 900px) {
+            grid-column: 4 / span 6;
+            margin: 0 1rem;
+        }
+
+        @media only screen and (max-width: 600px) {
+            grid-column: 3 / span 8;
+            margin: 0 1rem;
+        }
+
+        @media only screen and (max-width: 400px) {
+            grid-column: 1 / -1;
+            margin: 0 1rem;
+        }
+
+        .summary {
+            
+            &__title {
+                text-transform: uppercase;
+                background-color: var(--color-black);
+                color: var(--color-white);
+                padding: 2rem 0;
+            }
+
+            &__content {
+                padding: 2rem 1.5rem;
+               
+            }
+
+            &__item {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 3rem; 
+            }
+
+            &__number {
+                color: var(--color-red);
+            }
+
+        }
+    }
+
+}
+
+.border-top {
+    border-top: 1px solid var(--color-grey);
+    padding-top: 1rem;
+}

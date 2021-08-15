@@ -1,0 +1,40 @@
+@mixin small-label {
+    color: var(--color-grey-dark);
+    top: -2.4rem;
+    font-size: var(--font-m);
+}
+
+.custom-input__group {
+    width: 100%;
+    position: relative;
+    margin-bottom: 4rem;
+    
+    .custom-input{
+
+        &__label {
+            font-size: 2rem;
+            position: absolute;
+            top: .35rem;
+            left: 1rem;
+            transition: all .3s;
+            pointer-events: none;
+        }
+
+        &__input {
+            width: 100%;
+            font-size: 2rem;
+            padding: .7rem 1.5rem;
+            border: 1px solid var(--color-grey-dark);
+            border-radius: 10rem;
+            outline: none;
+        }
+
+        &__input:focus ~ .custom-input__label {
+            @include small-label;
+        }   
+    }
+
+    .smallLabel {
+        @include small-label;
+    }
+}

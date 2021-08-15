@@ -1,0 +1,99 @@
+.feature {
+    grid-column: full-start / full-end;
+    padding: 10rem 0;
+
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    background-color: rgba(240, 200, 155, .8);
+
+    @media only screen and (max-width: 600px) {
+        position: relative;
+        padding-top: 5rem;
+        padding-bottom: 25rem;
+    }
+
+    &__left {
+        grid-column: 1 / span 5;
+        grid-row: 1 / 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+
+        @media only screen and (max-width: 600px) {
+            grid-column: 1 / -1;
+        }
+        
+        .left {
+            
+            &__content {
+                position: relative;
+                z-index: 1;
+                
+            }
+
+            &__title {
+
+                &--1 {
+                    letter-spacing: 3px;
+                }
+
+                &--2 {
+                    font-size: var(--font-l);
+                }
+            }
+
+            &__text {
+                margin-top: var(--mar-m);
+                margin-bottom: var(--mar-l);
+                padding: 0 5rem;
+            }
+        }
+
+    }
+
+    &__background {
+        position: absolute;
+        right: 0;
+        height: 85%;
+        width: 50%;
+        background-color: rgba(255, 137, 130, .5);
+        z-index: 0;
+
+        @media only screen and (max-width: 600px) {
+            display: none;
+        }
+
+    }
+
+    &__right {
+        grid-column: 6 / span 6;
+        grid-row: 1 / 2;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+
+        @media only screen and (max-width: 600px) {
+            grid-column: 2 / span 8;
+            position: absolute;
+            top: 130%;
+            left: 0;
+            right: 0;
+            // transform: translate(-50%, -50%);
+        }
+
+        .right__img {
+            width: 90%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+
+            @media only screen and (max-width: 600px) {
+                width: 100%;
+            }
+        }
+}
+}

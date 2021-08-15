@@ -1,0 +1,22 @@
+.collection-page {
+    margin-top: 10rem;
+    margin-bottom: 40rem;
+
+
+    .title {
+        padding-left: 5rem;
+        margin-bottom: 5rem;
+        font-family: var(--font-secondary);
+    }
+
+    .items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 5rem;
+        gap: 5rem;
+
+        @media only screen and (max-width: 1500px) {
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        }
+    }
+}

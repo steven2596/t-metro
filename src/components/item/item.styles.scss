@@ -1,0 +1,100 @@
+@keyframes moveFromBottom {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -90%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.item {
+    box-shadow: var(--box-shadow);
+    border-radius: 1rem;
+    overflow: hidden;
+    
+    &__img-container {
+        height: 80%;
+        min-width: 25rem;
+        position: relative;
+        text-align: center;
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--color-black);
+        opacity: 0;
+        transition: all .3s;
+    }
+
+    &__button {
+        width: 70%;
+        font-size: var(--font-m);
+        font-family: var(--font-secondary);
+        padding: 1.5rem 2rem;
+        background-color: transparent;
+        border: 2px solid var(--color-white);
+        color: var(--color-white);
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        position: absolute;
+        bottom: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all .3s;
+        display: none;
+        animation: moveFromBottom .5s ease;
+
+        
+
+        &:hover {
+            background-color: var(--color-blue);
+            border: 2px solid var(--color-blue);
+            
+        }
+    }
+
+    &__img-container:hover &__button {
+        display: inline-block;
+    }
+
+    &__img-container:hover &__overlay {
+        opacity: .75;
+    }
+
+    &__img {
+        height: 100%;
+        width: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    &__detail {
+        position: relative;
+        height: 20%;
+        display: flex;
+        align-items: center;
+        padding: 1rem 1rem;
+        background-color: var(--color-grey-light);
+        font-size: var(--font-m);
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    &__title {
+        font-weight: 600;
+        flex-basis: 80%;
+    }
+    
+    &__price {
+        margin-left: auto;
+        color: var(--color-red);
+    }
+}

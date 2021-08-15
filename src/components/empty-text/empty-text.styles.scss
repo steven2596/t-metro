@@ -1,0 +1,43 @@
+.empty-checkout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    
+
+    .empty {
+
+        &__svg {
+            width: 60%;
+            margin-top: -5rem;
+            opacity: .85;
+
+            @media only screen and (max-width: 900px) {
+                width: 70%;
+            }
+    
+            @media only screen and (max-width: 600px) {
+                width: 80%;
+            }
+    
+            @media only screen and (max-width: 600px) {
+                width: 95%;
+            }
+        }
+
+        &__text-box {
+            margin-top: 7rem;
+        }
+
+        &__heading {
+            font-size: var(--font-l);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            
+        }
+
+        
+    }
+}
+

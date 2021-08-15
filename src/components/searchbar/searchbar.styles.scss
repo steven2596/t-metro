@@ -1,0 +1,63 @@
+.searchbar {
+    &__form {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media only screen and (max-width: 800px) {
+            width: 60%;
+        }
+
+        @media only screen and (max-width: 600px) {
+            width: 80%;
+        }
+
+        @media only screen and (max-width: 400px) {
+            width: 95%;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        font-size: var(--font-m);
+        outline: none;
+        padding: .9rem 1.5rem;
+        border: 2px solid var(--color-grey-dark);
+        border-radius: 10rem;
+        transition: all .3s;
+
+        &:focus {
+            
+            border: 2px solid var(--color-primary);
+        }
+        
+    }
+
+    &__button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        margin-left: -3.5rem;
+        cursor: pointer;
+    }
+
+    &__icon {
+        height: 2rem;
+        width: 2rem;
+        fill: var(--color-grey-dark);
+        transition: all .3s;
+    }
+
+    &__input:focus ~ &__button &__icon {
+        fill: var(--color-primary);
+    }
+}
+
+.input-color {
+    border: 2px solid var(--color-primary);
+}
+
+.icon-color {
+    fill: var(--color-primary);
+}

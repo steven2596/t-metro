@@ -1,0 +1,36 @@
+.footer {
+    text-align: center;
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    padding: 2rem 0;
+
+    &__title {
+        font-size: var(--font-l);
+        font-weight: 300;
+    }
+
+    &__icons {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 3.5rem;
+    }
+
+    &__icon-item {
+        
+        &:not(:last-child) {
+            margin-right: 4rem;
+        }
+    }
+
+    &__icon {
+        height: 2.5rem;
+        width: 2.5rem;
+        transition: all .3s;
+    }
+
+    &__icon-item:hover &__icon {
+        transform: translateY(-1rem);
+    }
+
+}
