@@ -12,7 +12,7 @@ const StripeCheckoutButton = ({ price }) => {
     //This will make post request to /payment to our server
     const onToken = token => {
         axios({
-            url: 'payment',
+            url: 'https://tmetro-server.herokuapp.com/payment',
             method: 'post',
             data: {
                 amount: priceForStripe,
