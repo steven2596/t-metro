@@ -69,7 +69,7 @@ const Navbar = ({ currentUser, signOutStart }) => {
 
             </ul>
 
-            <NavigationMenu />
+            <NavigationMenu currentUser={currentUser} signOutStart={signOutStart} />
             <Dropdown dropdown={dropdown} setDropdown={setDropdown} />
 
         </nav >

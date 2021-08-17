@@ -93,8 +93,26 @@
 
     &__item {
         text-transform: uppercase;
+
         &:not(:last-child) {
-            margin-bottom: 4rem;       
+            margin-bottom: 4rem;      
+        }
+    }
+
+    &__logout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 3rem;
+
+        &-icon {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        & span {
+            font-weight: bold;
+            margin-left: 1.5rem;
         }
     }
 

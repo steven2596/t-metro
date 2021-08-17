@@ -34,14 +34,12 @@ class App extends React.Component {
         {
           location.pathname !== "/login" ? <Navbar currentUser={currentUser} signOutStart={signOutStart} /> : null
         }
-
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={Shop} />
           <Route exact path="/checkout" component={CheckOut} />
           <Route exact path="/login" render={() => currentUser ? <Redirect to='/' /> : <SignInSignUp />} />
           <Route path="/search" component={Search} />
-
         </Switch>
         {
           location.pathname !== "/login" ? <Footer /> : null

@@ -9,6 +9,7 @@ import ProductCarousel from '../../components/product-carousel/product-carousel.
 import './homepage.styles.scss';
 
 const HomePage = () => {
+
     return (
         <div className="homepage" >
             <Header />

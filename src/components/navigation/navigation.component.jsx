@@ -4,7 +4,7 @@ import ReactDom from 'react-dom'
 import './navigation.styles.scss';
 import sprite from '../../assets/icons/sprite.svg';
 
-const NavigationMenu = ({ currentUser }) => {
+const NavigationMenu = ({ currentUser, signOutStart }) => {
     const [menu, setMenu] = useState(false);
 
     return ReactDom.createPortal(
@@ -39,7 +39,12 @@ const NavigationMenu = ({ currentUser }) => {
                     <li className="navigation__item">
                         {
                             currentUser ?
-                                <a href='#' className="navigation__link">Log Out</a>
+                                <div className="navigation__logout" onClick={() => signOutStart()} >
+                                    <svg className="navigation__logout-icon" >
+                                        <use href={sprite + '#icon-log-out'} />
+                                    </svg>
+                                    <span>Log out</span>
+                                </div>
                                 :
                                 <a href="/login" className="navigation__link">Sign In / Register</a>
                         }
