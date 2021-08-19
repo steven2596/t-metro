@@ -16,3 +16,8 @@ export const selectAuthError = createSelector(
     [selectUser],
     user => user.error
 );
+
+export const selectShowLoginPopup = createSelector(
+    [selectUser],
+    user => user.showLoginPopup
+)

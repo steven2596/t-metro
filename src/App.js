@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
 import { createStructuredSelector } from 'reselect';
-import { selectCurrentUser } from './redux/user/user.selectors';
-import { checkUserSession, signOutStart } from './redux/user/user.actions';
+import { selectCurrentUser, selectShowLoginPopup } from './redux/user/user.selectors';
+import { checkUserSession, hideLoginPopup, signOutStart } from './redux/user/user.actions';
 
 import HomePage from './pages/homepage/homepage.component';
 import Shop from './pages/shop/shop.component';
@@ -14,6 +14,7 @@ import Navbar from './components/navbar/navbar.component';
 import CheckOut from './pages/checkout/checkout.component';
 import SignInSignUp from './pages/sign-in-sign-up/sign-in-sign-up.component';
 import Search from './pages/search/search.component';
+import PopupModal from './components/popup-modal/popup-modal.component';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { location, currentUser, signOutStart } = this.props;
+    const { location, currentUser, signOutStart, showLoginPopup, hideLoginPopup } = this.props;
 
     return (
       <div className="App">
@@ -37,13 +38,14 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={Shop} />
-          <Route exact path="/checkout" component={CheckOut} />
+          <Route exact path="/checkout" render={() => currentUser ? <CheckOut /> : <Redirect to='/login' />} />
           <Route exact path="/login" render={() => currentUser ? <Redirect to='/' /> : <SignInSignUp />} />
           <Route path="/search" component={Search} />
         </Switch>
         {
           location.pathname !== "/login" ? <Footer /> : null
         }
+        <PopupModal showLoginPopup={showLoginPopup} hideLoginPopup={hideLoginPopup} />
       </div>
 
 
@@ -52,12 +54,14 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  showLoginPopup: selectShowLoginPopup
 });
 
 const mapDispatchToProps = (dispatch) => ({
   checkUserSession: () => dispatch(checkUserSession()),
-  signOutStart: () => dispatch(signOutStart())
+  signOutStart: () => dispatch(signOutStart()),
+  hideLoginPopup: () => dispatch(hideLoginPopup())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

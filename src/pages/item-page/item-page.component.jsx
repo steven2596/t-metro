@@ -9,8 +9,10 @@ import { addItemWithCount } from '../../redux/cart/cart.actions';
 import Button from '../../components/button/button.component';
 
 import './item-page.styles.scss';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { showLoginPopup } from '../../redux/user/user.actions';
 
-const ItemPage = ({ match, collection, addItemWithCount, uid, cartItems }) => {
+const ItemPage = ({ match, collection, addItemWithCount, uid, cartItems, currentUser, showLoginPopup }) => {
     const [count, setCount] = useState(1);
 
     //extracting itemID from url
@@ -21,12 +23,16 @@ const ItemPage = ({ match, collection, addItemWithCount, uid, cartItems }) => {
     const { title, price, type, imgUrl, detail } = product;
 
     const addToCart = () => {
-        addItemWithCount({
-            product,
-            count: count,
-            uid,
-            cartItems
-        })
+        if (currentUser) {
+            addItemWithCount({
+                product,
+                count: count,
+                uid,
+                cartItems
+            })
+        } else {
+            showLoginPopup();
+        }
     }
 
     return (
@@ -63,13 +69,15 @@ const ItemPage = ({ match, collection, addItemWithCount, uid, cartItems }) => {
 }
 
 const mapStateToProps = (state, ownProps) => ({
+    currentUser: state.user.currentUser,
     collection: selectCollection(ownProps.match.params.collectionID)(state),
     uid: state.user.currentUser && state.user.currentUser.id,
     cartItems: state.cart.cartItems
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    addItemWithCount: (item) => dispatch(addItemWithCount(item))
+    addItemWithCount: (item) => dispatch(addItemWithCount(item)),
+    showLoginPopup: () => dispatch(showLoginPopup())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemPage);

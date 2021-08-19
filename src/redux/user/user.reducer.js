@@ -2,7 +2,8 @@ import UserActionTypes from "./user.types";
 
 const INITIAL_STATE = {
     currentUser: null,
-    error: null
+    error: null,
+    showLoginPopup: null
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +12,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 currentUser: action.payload,
+                showLoginPopup: false,
                 error: null
             };
 
@@ -18,14 +20,28 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 currentUser: null,
+                showLoginPopup: null,
                 error: null
             };
+
+        case UserActionTypes.SHOW_LOGIN_POPUP:
+            return {
+                ...state,
+                showLoginPopup: true
+            }
+
+        case UserActionTypes.HIDE_LOGIN_POPUP:
+            return {
+                ...state,
+                showLoginPopup: false
+            }
 
         case UserActionTypes.SIGN_IN_FAILURE:
         case UserActionTypes.SIGN_UP_FAILURE:
         case UserActionTypes.SIGN_OUT_FAILURE:
             return {
                 ...state,
+                showLoginPopup: null,
                 error: action.payload
             };
 

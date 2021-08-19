@@ -4,19 +4,28 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { addItem } from '../../redux/cart/cart.actions';
-import { selectCurrentUserID } from '../../redux/user/user.selectors';
+import { selectCurrentUser, selectCurrentUserID } from '../../redux/user/user.selectors';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 
 import './item.styles.scss';
+import { showLoginPopup } from '../../redux/user/user.actions';
 
-const Item = ({ item, addItem, uid, cartItems }) => {
+const Item = ({ item, addItem, uid, cartItems, currentUser, showLoginPopup }) => {
     const { id, title, price, imgUrl, type } = item;
+
+    const handleAddingItem = () => {
+        if (currentUser) {
+            addItem({ cartItems, item, uid })
+        } else {
+            showLoginPopup();
+        }
+    }
 
     return (
         <div className="item" >
             <div className="item__img-container" >
                 <div className="item__overlay" />
-                <div className="item__button" onClick={() => addItem({ cartItems, item, uid })} >Add to Cart</div>
+                <div className="item__button" onClick={() => handleAddingItem()} >Add to Cart</div>
                 <img src={imgUrl} alt="product-img" className="item__img" />
             </div>
             <a href={`/shop/${type}s/${id}`} className="router-link">
@@ -30,12 +39,14 @@ const Item = ({ item, addItem, uid, cartItems }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
     uid: selectCurrentUserID,
-    cartItems: selectCartItems
+    cartItems: selectCartItems,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    addItem: (item) => dispatch(addItem(item))
+    addItem: (item) => dispatch(addItem(item)),
+    showLoginPopup: () => dispatch(showLoginPopup())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item);

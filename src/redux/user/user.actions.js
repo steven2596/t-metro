@@ -14,6 +14,14 @@ export const checkUserSession = () => ({
     type: UserActionTypes.CHECK_USER_SESSION
 })
 
+export const showLoginPopup = () => ({
+    type: UserActionTypes.SHOW_LOGIN_POPUP
+})
+
+export const hideLoginPopup = () => ({
+    type: UserActionTypes.HIDE_LOGIN_POPUP
+})
+
 export const googleSignInStart = () => ({
     type: UserActionTypes.GOOGLE_SIGN_IN_START
 });

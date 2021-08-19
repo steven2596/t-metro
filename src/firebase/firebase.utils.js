@@ -4,7 +4,7 @@ import 'firebase/auth';
 
 const config = {
     apiKey: process.env.REACT_APP_APIKEY,
-    authDomain: "tmetro.netlify.app",
+    authDomain: "t-metro.firebaseapp.com",
     projectId: "t-metro",
     storageBucket: "t-metro.appspot.com",
     messagingSenderId: "385361822684",
