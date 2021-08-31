@@ -34,3 +34,11 @@ export const clearItem = (item) => ({
 export const clearCart = () => ({
     type: UserActionTypes.SIGN_OUT_SUCCESS
 });
+
+export const showAddToCartPopup = () => ({
+    type: CartActionTypes.SHOW_ADD_TO_CART_POPUP
+});
+
+export const hideAddToCartPopup = () => ({
+    type: CartActionTypes.HIDE_ADD_TO_CART_POPUP
+});

@@ -3,6 +3,7 @@ import CartActionTypes from './cart.types';
 
 const INITIAL_STATE = {
     cartItems: [],
+    addToCartPopup: false,
     error: null
 }
 
@@ -26,6 +27,18 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 cartItems: [],
                 error: null
+            };
+
+        case CartActionTypes.SHOW_ADD_TO_CART_POPUP:
+            return {
+                ...state,
+                addToCartPopup: true
+            };
+
+        case CartActionTypes.HIDE_ADD_TO_CART_POPUP:
+            return {
+                ...state,
+                addToCartPopup: false
             };
 
         default: return state;

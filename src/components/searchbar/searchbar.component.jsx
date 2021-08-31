@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router';
 
 import './searchbar.styles.scss';
+import useAbbreviation from '../useAbbreviation.js';
 
 import sprite from '../../assets/icons/sprite.svg';
 
 const SearchBar = ({ history }) => {
     const [search, setSearch] = useState('');
+    const heading = useAbbreviation(search)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,6 +21,7 @@ const SearchBar = ({ history }) => {
 
     return (
         <form onSubmit={handleSubmit} className="searchbar__form">
+            <h2>{heading}</h2>
             <input
                 className={`searchbar__input ${search.length > 0 ? 'input-color' : ''}`}
                 type="text"

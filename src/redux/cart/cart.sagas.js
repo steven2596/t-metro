@@ -1,9 +1,11 @@
 import { put, call, takeLatest, all } from 'redux-saga/effects';
 import UserActionTypes from '../user/user.types';
 import { firestore } from '../../firebase/firebase.utils';
-import { fetchCartSuccess, fetchCartFailure } from './cart.actions';
+import { fetchCartSuccess, fetchCartFailure, showAddToCartPopup } from './cart.actions';
 import { addItemToCart, addItemWithCount, removeItemFromCart, clearItemFromCart } from './cart.utils';
 import CartActionTypes from './cart.types';
+
+// variable to check whether function is addItem
 
 export function* fetchCartAsync({ payload: { cartItems } }) {
     try {
@@ -15,11 +17,15 @@ export function* fetchCartAsync({ payload: { cartItems } }) {
 }
 
 //Update cartItems in database after adding or removing item
-export function* updateCart({ uid, items }) {
+export function* updateCart({ uid, items, isAddFunction }) {
     const userRef = yield firestore.doc(`users/${uid}`);
     yield userRef.update({
         cartItems: items
     });
+
+    if (isAddFunction) {
+        yield put(showAddToCartPopup());
+    }
 
     const snapshot = yield userRef.get();
     const { cartItems } = yield snapshot.data();
@@ -28,9 +34,10 @@ export function* updateCart({ uid, items }) {
 
 export function* addItemAsync({ payload: { uid, item, cartItems } }) {
     const items = addItemToCart(cartItems, item);
+    let isAddFunction = true;
 
     try {
-        yield call(updateCart, { uid, items })
+        yield call(updateCart, { uid, items, isAddFunction })
     } catch (error) {
         yield put(fetchCartFailure(error))
     }
@@ -38,10 +45,10 @@ export function* addItemAsync({ payload: { uid, item, cartItems } }) {
 
 export function* addItemWithCountAsync({ payload: { uid, product, cartItems, count } }) {
     const items = addItemWithCount(cartItems, { product, count });
-    console.log(cartItems)
+    let isAddFunction = true;
 
     try {
-        yield call(updateCart, { uid, items })
+        yield call(updateCart, { uid, items, isAddFunction })
     } catch (error) {
         yield put(fetchCartFailure(error))
     }
@@ -102,6 +109,7 @@ export function* onClearItemFromCart() {
         clearItemFromCartAsync
     )
 }
+
 
 
 export function* cartSagas() {

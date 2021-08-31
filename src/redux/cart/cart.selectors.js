@@ -22,3 +22,9 @@ export const selectCartItemsAmount = createSelector(
         (accumulatedAmount, cartItem) => accumulatedAmount + (cartItem.quantity * cartItem.price), 0
     )
 )
+
+//Returns status for addToCartPopup
+export const selectAddToCartPopup = createSelector(
+    [selectCart],
+    cart => cart.addToCartPopup
+)

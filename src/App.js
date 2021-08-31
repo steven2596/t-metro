@@ -15,6 +15,9 @@ import CheckOut from './pages/checkout/checkout.component';
 import SignInSignUp from './pages/sign-in-sign-up/sign-in-sign-up.component';
 import Search from './pages/search/search.component';
 import PopupModal from './components/popup-modal/popup-modal.component';
+import AddToCartPopup from './components/add-to-cart-popup/add-to-cart-popup.component';
+import { selectAddToCartPopup } from './redux/cart/cart.selectors';
+import { hideAddToCartPopup, showAddToCartPopup } from './redux/cart/cart.actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,7 +31,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { location, currentUser, signOutStart, showLoginPopup, hideLoginPopup } = this.props;
+    const { location, currentUser, signOutStart, showLoginPopup, hideLoginPopup, addToCartPopup, showAddToCartPopup, hideAddToCartPopup } = this.props;
 
     return (
       <div className="App">
@@ -45,7 +48,14 @@ class App extends React.Component {
         {
           location.pathname !== "/login" ? <Footer /> : null
         }
+
         <PopupModal showLoginPopup={showLoginPopup} hideLoginPopup={hideLoginPopup} />
+
+        <AddToCartPopup
+          addToCartPopup={addToCartPopup}
+          showAddToCartPopup={showAddToCartPopup}
+          hideAddToCartPopup={hideAddToCartPopup}
+        />
       </div>
 
 
@@ -55,13 +65,16 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  showLoginPopup: selectShowLoginPopup
+  showLoginPopup: selectShowLoginPopup,
+  addToCartPopup: selectAddToCartPopup
 });
 
 const mapDispatchToProps = (dispatch) => ({
   checkUserSession: () => dispatch(checkUserSession()),
   signOutStart: () => dispatch(signOutStart()),
-  hideLoginPopup: () => dispatch(hideLoginPopup())
+  hideLoginPopup: () => dispatch(hideLoginPopup()),
+  showAddToCartPopup: () => dispatch(showAddToCartPopup()),
+  hideAddToCartPopup: () => dispatch(hideAddToCartPopup())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

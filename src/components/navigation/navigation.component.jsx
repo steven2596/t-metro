@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import ReactDom from 'react-dom'
+import ReactDom from 'react-dom';
+import { useHistory } from 'react-router-dom';
 
 import './navigation.styles.scss';
 import sprite from '../../assets/icons/sprite.svg';
 
-const NavigationMenu = ({ currentUser, signOutStart }) => {
+const NavigationMenu = ({ currentUser, signOutStart, setDropdown }) => {
     const [menu, setMenu] = useState(false);
+    let history = useHistory();
+
+    const handleCheckout = () => {
+        setMenu(false);
+        history.push(`/checkout`);
+    }
 
     return ReactDom.createPortal(
         <div className={`navigation ${menu ? 'navigation-active' : ''} `} >
@@ -31,11 +38,12 @@ const NavigationMenu = ({ currentUser, signOutStart }) => {
                         <a href="/shop/photobooks" >Photobooks</a>
                     </li>
                     <li className="navigation__item">
-                        <a href="/shop/merchs">Merch</a>
+                        <a href="/shop/merchs" >Merch</a>
                     </li>
-                    <li className="navigation__item">
-                        <a href="/checkout">Checkout</a>
+                    <li className="navigation__item" onClick={() => handleCheckout()}>
+                        Checkout
                     </li>
+
                     <li className="navigation__item">
                         {
                             currentUser ?
