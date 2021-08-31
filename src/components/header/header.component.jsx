@@ -14,13 +14,13 @@ const Header = () => {
 
             <div className="header__content">
                 <span className="content__sub-title">new release</span>
-                <h2 className="content__title">Yes, I am Sana</h2>
+                <h2 className="content__title">Taste of Love</h2>
                 <p className="content__text">
-                    Here comes the first photobook of Sana for
-                    'Yes, I am' photobook series. Can't wait to
-                    see Sana's alluring beauty? Order now.
+                    TWICE has come back with their 10th mini album "Taste of Love".
+                    The title track "Alcohol Free" is a new summer song made by
+                    combining hip-hop with Bossa Nova.
                 </p>
-                <a href="/shop/photobooks/2000" >
+                <a href="/shop/albums/1000" >
                     <Button>View Details</Button>
                 </a>
             </div>
