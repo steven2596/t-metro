@@ -29,10 +29,12 @@ const Item = ({ item, addItem, uid, cartItems, currentUser, showLoginPopup }) =>
                 <img src={imgUrl} alt="product-img" className="item__img" />
             </div>
             <a href={`/shop/${type}s/${id}`} className="router-link">
+
                 <div className="item__detail" >
                     <h4 className="item__title" >{title}</h4>
                     <span className="item__price" >${price}</span>
                 </div >
+
             </a >
         </div >
     );

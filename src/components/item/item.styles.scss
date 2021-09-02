@@ -14,9 +14,10 @@
     box-shadow: var(--box-shadow);
     border-radius: 1rem;
     overflow: hidden;
+    height: 40rem;
     
     &__img-container {
-        height: 80%;
+        height: 75%;
         min-width: 25rem;
         position: relative;
         text-align: center;
@@ -78,18 +79,34 @@
 
     &__detail {
         position: relative;
-        height: 20%;
+        height: 25%;
         display: flex;
         align-items: center;
-        padding: 1rem 1rem;
-        background-color: var(--color-grey-light);
+        padding: 0 1.5rem;
+        background-color: rgba(173, 181, 189, 0.5);
         font-size: var(--font-m);
         cursor: pointer;
+        overflow: hidden;
         z-index: 1;
+
+        // background for glass effect
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+            filter: blur(4rem);
+            opacity: 0.85;
+            z-index: -1;
+        }
     }
 
     &__title {
         font-weight: 600;
+        font-size: 1.8rem;
         flex-basis: 80%;
     }
     
