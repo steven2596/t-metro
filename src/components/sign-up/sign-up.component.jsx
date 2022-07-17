@@ -29,7 +29,7 @@ class SignUp extends React.Component {
             alert('Passwords do not match');
             return;
         }
-        console.log(this.state);
+
         signUpStart({ displayName, email, password });
 
     }

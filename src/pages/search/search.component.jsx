@@ -7,13 +7,12 @@ import SearchPage from '../search-page/search-page.component';
 import './search.styles.scss';
 
 const Search = ({ match }) => {
-    return (
-        <Switch>
-            <Route exact path={match.path} component={SearchHomePage} />
-            <Route path={`${match.path}/:query`} component={SearchPage} />
-
-        </Switch>
-    );
-}
+  return (
+    <Switch>
+      <Route exact path={match.path} component={SearchHomePage} />
+      <Route path={`${match.path}/:query`} component={SearchPage} />
+    </Switch>
+  );
+};
 
 export default Search;
