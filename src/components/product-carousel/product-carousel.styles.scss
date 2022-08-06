@@ -1,22 +1,20 @@
 .product-carousel {
-    grid-column: 1 / -1;
-    margin-bottom: 15rem;
-   
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 5rem;
-    gap: 5rem;
+  grid-column: 1 / -1;
+  margin-bottom: 15rem;
 
-    @media only screen and (max-width: 1500px) {
-        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    }
-    
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 5rem;
+  gap: 5rem;
+
+  @media only screen and (max-width: 1500px) {
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  }
 }
 
 .product-carousal__title {
-    grid-column: 1 / -1;
-    margin-top: 15rem;
-    margin-bottom: 3rem;
-    text-align: center;
+  grid-column: 1 / -1;
+  margin-top: 15rem;
+  margin-bottom: 3rem;
+  text-align: center;
 }
-

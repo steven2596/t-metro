@@ -1,33 +1,23 @@
 .search-homepage {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 7rem 2rem;
-    margin-bottom: 18rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7rem 2rem;
+  margin-bottom: 18rem;
 
-    &__heading {
-        font-size: var(--font-s);
-        font-weight: 300;
-        margin-top: 1rem;
-        margin-bottom: 5rem;
-        text-align: center;
+  &__heading {
+    font-size: var(--font-s);
+    font-weight: 300;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  &__figure {
+    width: 40%;
+
+    @media only screen and (max-width: 600px) {
+      width: 95%;
     }
-
-    &__figure {
-        width: 50%;
-        height: 50%;
-
-        @media only screen and (max-width: 900px) {
-            width: 70%;
-        }
-
-        @media only screen and (max-width: 600px) {
-            width: 80%;
-        }
-
-        @media only screen and (max-width: 600px) {
-            width: 95%;
-        }
-    }
+  }
 }
